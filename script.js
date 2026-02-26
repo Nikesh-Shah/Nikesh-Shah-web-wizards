@@ -66,6 +66,7 @@
     mobileMenu.classList.add('open');
     mobileMenu.setAttribute('aria-hidden', 'false');
     navToggle.classList.add('open');
+    navbar.classList.add('menu-open');      // hide navbar so it doesn't overlap
     document.body.style.overflow = 'hidden'; // lock the background while menu is open
   }
 
@@ -73,6 +74,7 @@
     mobileMenu.classList.remove('open');
     mobileMenu.setAttribute('aria-hidden', 'true');
     navToggle.classList.remove('open');
+    navbar.classList.remove('menu-open');  // restore navbar
     document.body.style.overflow = '';
   }
 

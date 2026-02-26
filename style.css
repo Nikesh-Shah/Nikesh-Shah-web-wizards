@@ -279,6 +279,7 @@ img { max-width: 100%; display: block; }
 }
 
 #navbar.hidden { transform: translateY(-100%); }
+#navbar.menu-open { opacity: 0; pointer-events: none; transition: opacity 0.2s; }
 
 .nav-wrap {
   max-width: var(--max); margin: 0 auto; padding: 0 56px;
