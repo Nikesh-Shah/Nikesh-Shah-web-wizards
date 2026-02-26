@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachetana — Secure Minds. Safer Digital Nepal.</title>
+  <meta name="description" content="Sachetana empowers Nepali citizens with cybersecurity knowledge, digital rights awareness, and safe digital practices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/assets/icon2.png" type="image/x-icon">
+</head>
+<body>
+
+  <!-- thin gradient bar that fills as the user reads down the page -->
+  <div id="read-progress" aria-hidden="true"></div>
+
+  <!-- fixed button, fades in after scrolling past the fold -->
+  <button id="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <span class="pre-np">सचेतना</span>
+        <span class="pre-line"></span>
+        <span class="pre-en">SACHETANA</span>
+      </div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- sticky nav: hides on scroll-down, reappears on scroll-up -->
+  <nav id="navbar">
+    <div class="nav-wrap">
+      <a href="#" class="nav-logo">
+        <span class="logo-np">सचेतना</span>
+        <span class="logo-en">SACHETANA</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#threats" class="nav-link">Threats</a></li>
+        <li><a href="#rights" class="nav-link">Rights</a></li>
+        <li><a href="#practices" class="nav-link">Practices</a></li>
+        <li><a href="#quiz" class="nav-link">Quiz</a></li>
+        <li><a href="#news" class="nav-link">News</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- sun/moon icons; JS swaps visibility based on active theme -->
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+        <a href="#cta" class="nav-cta">Get Protected</a>
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- full-screen mobile menu slides in from the right -->
+  <div id="mobile-menu" aria-hidden="true">
+    <div class="mm-header">
+      <a href="#" class="nav-logo">
+        <span class="logo-np">सचेतना</span>
+        <span class="logo-en">SACHETANA</span>
+      </a>
+      <button class="mm-close" id="mm-close" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="mm-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#threats">Threats</a></li>
+      <li><a href="#rights">Rights</a></li>
+      <li><a href="#practices">Practices</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#cta">Get Protected</a></li>
+    </ul>
+  </div>
+
+  <!-- hero: full-viewport landing with animated shield and floating tags -->
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow glow-red"></div>
+    <div class="hero-glow glow-blue"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Nepal's Digital Awareness Platform
+      </div>
+
+      <h1 class="hero-title">
+        <span class="h-line reveal">SAFEGUARD</span>
+        <span class="h-line h-accent reveal">YOUR DIGITAL</span>
+        <span class="h-line reveal">LIFE.</span>
+      </h1>
+
+      <p class="hero-sub reveal">
+        In Nepal's rapidly evolving digital landscape, knowledge is your strongest shield.
+        Sachetana educates, empowers, and protects every Nepali citizen online.
+      </p>
+      <p class="hero-np reveal">डिजिटल सुरक्षा — तपाईंको अधिकार</p>
+
+      <div class="hero-btns reveal">
+        <a href="#about" class="btn btn-primary">
+          Explore Platform
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#threats" class="btn btn-ghost">Know the Threats</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="shield-container">
+        <div class="shield-ring ring-1"></div>
+        <div class="shield-ring ring-2"></div>
+        <div class="shield-ring ring-3"></div>
+        <div class="shield-core">
+          <svg width="64" height="76" viewBox="0 0 100 120" fill="none">
+            <path d="M50 8L90 24V56C90 80 72 100 50 112C28 100 10 80 10 56V24L50 8Z" stroke="url(#shieldGrad)" stroke-width="3" fill="rgba(232,0,45,0.06)"/>
+            <path d="M34 60L45 71L68 48" stroke="var(--accent)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="shieldGrad" x1="10" y1="8" x2="90" y2="112">
+                <stop offset="0%" stop-color="#E8002D"/>
+                <stop offset="100%" stop-color="#003893"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="float-tag ft-1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Encrypted
+        </div>
+        <div class="float-tag ft-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Protected
+        </div>
+        <div class="float-tag ft-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>
+          Aware
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator reveal">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- marquee: keywords ticker belt scrolling left continuously -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>CYBERSECURITY</span><span class="dot">&#8226;</span>
+        <span>DIGITAL RIGHTS</span><span class="dot">&#8226;</span>
+        <span>ONLINE SAFETY</span><span class="dot">&#8226;</span>
+        <span class="np-text">सचेतना</span><span class="dot">&#8226;</span>
+        <span>DATA PRIVACY</span><span class="dot">&#8226;</span>
+        <span>NEPAL</span><span class="dot">&#8226;</span>
+        <span>EMPOWERMENT</span><span class="dot">&#8226;</span>
+        <span>AWARENESS</span><span class="dot">&#8226;</span>
+        <span>CYBERSECURITY</span><span class="dot">&#8226;</span>
+        <span>DIGITAL RIGHTS</span><span class="dot">&#8226;</span>
+        <span>ONLINE SAFETY</span><span class="dot">&#8226;</span>
+        <span class="np-text">सचेतना</span><span class="dot">&#8226;</span>
+        <span>DATA PRIVACY</span><span class="dot">&#8226;</span>
+        <span>NEPAL</span><span class="dot">&#8226;</span>
+        <span>EMPOWERMENT</span><span class="dot">&#8226;</span>
+        <span>AWARENESS</span><span class="dot">&#8226;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- stats: four Nepal cybercrime figures that count up when scrolled into view -->
+  <section id="stats">
+    <div class="container">
+      <div class="section-header center">
+        <span class="tag reveal">NEPAL DIGITAL REALITY</span>
+        <h2 class="section-title reveal">The numbers<br>don't lie.</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal" data-target="13.2" data-suffix="M+">
+          <div class="stat-number"><span class="counter">0</span><span class="stat-suffix">M+</span></div>
+          <div class="stat-label">Internet Users in Nepal</div>
+          <div class="stat-desc">Growing 18% annually, yet digital literacy remains critically low</div>
+        </div>
+        <div class="stat-card reveal" data-target="45" data-suffix="%">
+          <div class="stat-number"><span class="counter">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">Rise in Cyber Crimes</div>
+          <div class="stat-desc">Nepal Police Cyber Bureau reported sharp surge in 2023</div>
+        </div>
+        <div class="stat-card reveal" data-target="1.8" data-suffix="M+">
+          <div class="stat-number"><span class="counter">0</span><span class="stat-suffix">M+</span></div>
+          <div class="stat-label">Mobile Banking Users</div>
+          <div class="stat-desc">Exposed to financial fraud, phishing and SIM swap attacks</div>
+        </div>
+        <div class="stat-card stat-highlight reveal" data-target="72" data-suffix="%">
+          <div class="stat-number"><span class="counter">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">Unaware of Digital Rights</div>
+          <div class="stat-desc">Most Nepali users don't know their rights or where to seek help</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- about: mission statement, three pillars, and floating info cards -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left">
+          <span class="tag reveal">ABOUT SACHETANA</span>
+          <h2 class="section-title reveal">Awareness that<br><em>protects.</em></h2>
+          <div class="accent-bar reveal"></div>
+          <p class="body-text reveal">
+            Sachetana <span class="np-inline">(सचेतना)</span> means <strong>consciousness</strong>
+            and <strong>awareness</strong> in Nepali. Our platform bridges the critical gap between
+            Nepal's rapid digital adoption and the knowledge needed to navigate it safely.
+          </p>
+          <p class="body-text reveal">
+            From rural communities picking up smartphones for the first time, to urban professionals
+            handling sensitive data — we speak to every Nepali citizen in a language they understand.
+          </p>
+          <div class="pillars">
+            <div class="pillar reveal">
+              <div class="pillar-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <div><h4>Educate</h4><p>Clear, jargon-free cybersecurity education for all</p></div>
+            </div>
+            <div class="pillar reveal">
+              <div class="pillar-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>
+              </div>
+              <div><h4>Empower</h4><p>Know your digital rights and confidently exercise them</p></div>
+            </div>
+            <div class="pillar reveal">
+              <div class="pillar-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div><h4>Protect</h4><p>Practical, everyday habits that shield your digital life</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <div class="about-visual">
+            <div class="nepal-flag-deco" aria-hidden="true">
+              <div class="flag-tri flag-top"></div>
+              <div class="flag-tri flag-bot"></div>
+            </div>
+            <div class="about-card ac-1 reveal">
+              <div class="ac-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              </div>
+              <h4>Your Data, Your Rights</h4>
+              <p>Protected under Nepal's Privacy Act 2075 BS</p>
+            </div>
+            <div class="about-card ac-2 reveal">
+              <div class="ac-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <h4>Mobile-First Nepal</h4>
+              <p>82% of users access internet via smartphones</p>
+            </div>
+            <div class="about-card ac-3 reveal">
+              <div class="ac-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              </div>
+              <h4>Digital Nepal Vision</h4>
+              <p>Aligned with Government's Digital Nepal 2030</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- threats: six most common Nepal cyber threats, each card opens a detail modal -->
+  <section id="threats">
+    <div class="container">
+      <div class="section-header center">
+        <span class="tag reveal">CYBER THREATS IN NEPAL</span>
+        <h2 class="section-title reveal">Know what's<br>targeting you.</h2>
+        <p class="section-sub reveal">These are the most common threats facing Nepali internet users today</p>
+      </div>
+      <div class="threats-grid">
+
+        <div class="threat-card reveal" data-modal="phishing">
+          <div class="tc-num">01</div>
+          <div class="tc-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 18L24 8L40 18V36L24 46L8 36V18Z" stroke="var(--accent)" stroke-width="2"/><path d="M24 22V30M24 34H24.01" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Phishing Attacks</h3>
+          <p>Fake emails, SMS, and lookalike websites impersonating banks, NTC, Ncell, and government portals to steal your login credentials.</p>
+          <span class="risk-badge risk-high">HIGH RISK</span>
+          <button class="tc-more" aria-label="Learn more about Phishing">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <div class="threat-card reveal" data-modal="social">
+          <div class="tc-num">02</div>
+          <div class="tc-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="4" stroke="#FF6B35" stroke-width="2"/><circle cx="24" cy="24" r="8" stroke="#FF6B35" stroke-width="2"/><path d="M24 16V8M24 40V32M16 24H8M40 24H32" stroke="#FF6B35" stroke-width="2"/></svg>
+          </div>
+          <h3>Social Media Scams</h3>
+          <p>Fake Facebook lotteries, WhatsApp job offers, Instagram "investment" schemes — targeting Nepali users every single day.</p>
+          <span class="risk-badge risk-high">HIGH RISK</span>
+          <button class="tc-more" aria-label="Learn more about Social Media Scams">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <div class="threat-card reveal" data-modal="banking">
+          <div class="tc-num">03</div>
+          <div class="tc-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="12" y="8" width="24" height="32" rx="3" stroke="#FFD700" stroke-width="2"/><path d="M18 20H30M18 26H26M18 32H24" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Mobile Banking Fraud</h3>
+          <p>Vishing calls posing as eSewa, Khalti, or NMB Bank officials requesting OTPs, PINs, and account details under false pretenses.</p>
+          <span class="risk-badge risk-high">HIGH RISK</span>
+          <button class="tc-more" aria-label="Learn more about Banking Fraud">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <div class="threat-card reveal" data-modal="identity">
+          <div class="tc-num">04</div>
+          <div class="tc-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 6L36 12V24C36 32 30 39 24 42C18 39 12 32 12 24V12L24 6Z" stroke="#A855F7" stroke-width="2"/><path d="M19 24L22 27L29 20" stroke="#A855F7" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Identity Theft</h3>
+          <p>Misuse of your citizenship card number, passport data, and personal details for fraudulent loan applications and SIM registrations.</p>
+          <span class="risk-badge risk-med">MEDIUM RISK</span>
+          <button class="tc-more" aria-label="Learn more about Identity Theft">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <div class="threat-card reveal" data-modal="harassment">
+          <div class="tc-num">05</div>
+          <div class="tc-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#00C8FF" stroke-width="2"/><path d="M10 40C10 32.268 16.268 26 24 26C31.732 26 38 32.268 38 40" stroke="#00C8FF" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Cyber Harassment</h3>
+          <p>Online bullying, non-consensual intimate image sharing, and digital stalking — rising sharply among youth and women in Nepal.</p>
+          <span class="risk-badge risk-med">MEDIUM RISK</span>
+          <button class="tc-more" aria-label="Learn more about Cyber Harassment">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <div class="threat-card reveal" data-modal="malware">
+          <div class="tc-num">06</div>
+          <div class="tc-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="2" stroke="#22C55E" stroke-width="2"/><path d="M6 34L42 34" stroke="#22C55E" stroke-width="2"/><path d="M18 40H30" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/><path d="M24 34V40" stroke="#22C55E" stroke-width="2"/><path d="M16 20L20 24L16 28" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="22" y1="28" x2="30" y2="28" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Malware &amp; Ransomware</h3>
+          <p>Malicious apps from unofficial sources silently locking your device or stealing contacts, photos, and banking credentials.</p>
+          <span class="risk-badge risk-med">MEDIUM RISK</span>
+          <button class="tc-more" aria-label="Learn more about Malware">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- modal overlay: JS fills in title, body text, and protection tips from the threats data object -->
+  <div id="threat-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <div id="modal-text"></div>
+        <div class="modal-tips">
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            How to Protect Yourself
+          </h4>
+          <ul id="modal-tips-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- rights: five digital rights every Nepali citizen holds, mapped to specific laws -->
+  <section id="rights">
+    <div class="container">
+      <div class="section-header center">
+        <span class="tag reveal">YOUR DIGITAL RIGHTS</span>
+        <h2 class="section-title reveal">Rights you<br>deserve online.</h2>
+        <p class="section-sub reveal">Every Nepali citizen has fundamental digital rights protected by law</p>
+      </div>
+      <div class="rights-list">
+        <div class="right-item reveal">
+          <div class="ri-index">01</div>
+          <div class="ri-body">
+            <h3>Right to Privacy</h3>
+            <p>Your personal data, messages, and online activities cannot be accessed without lawful authority. Explicitly protected under Nepal's Privacy Act 2075 BS.</p>
+          </div>
+          <span class="ri-law">Privacy Act 2075</span>
+        </div>
+        <div class="right-item reveal">
+          <div class="ri-index">02</div>
+          <div class="ri-body">
+            <h3>Right to Digital Expression</h3>
+            <p>Freedom of speech extends fully to the digital realm. You may express opinions online within the bounds of law, free from unjust censorship and surveillance.</p>
+          </div>
+          <span class="ri-law">Constitution 2072</span>
+        </div>
+        <div class="right-item reveal">
+          <div class="ri-index">03</div>
+          <div class="ri-body">
+            <h3>Right to Information</h3>
+            <p>You have the right to access information held by public bodies and internet service providers regarding your personal data and how it is used.</p>
+          </div>
+          <span class="ri-law">RTI Act 2064</span>
+        </div>
+        <div class="right-item reveal">
+          <div class="ri-index">04</div>
+          <div class="ri-body">
+            <h3>Protection from Cybercrime</h3>
+            <p>Nepal's Electronic Transaction Act 2063 and Cybercrime provisions actively protect you from online fraud, unauthorized computer access, and digital harassment.</p>
+          </div>
+          <span class="ri-law">ETA 2063</span>
+        </div>
+        <div class="right-item reveal">
+          <div class="ri-index">05</div>
+          <div class="ri-body">
+            <h3>Right to Digital Inclusion</h3>
+            <p>Equitable access to the internet and digital services is a recognized right, aligned with Nepal's Digital Nepal Framework and SDG commitments.</p>
+          </div>
+          <span class="ri-law">Digital Nepal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- practices: sticky left column with seven safe habits + interactive password checker -->
+  <section id="practices">
+    <div class="container">
+      <div class="practices-grid">
+        <div class="practices-left">
+          <span class="tag reveal">SAFE DIGITAL PRACTICES</span>
+          <h2 class="section-title reveal">Simple steps.<br>Massive<br>protection.</h2>
+          <p class="body-text reveal" style="margin-top:24px;">These actions protect you from over 90% of common cyber attacks. Start today.</p>
+
+          <button id="print-checklist" class="btn btn-ghost reveal" style="margin-top:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print Security Checklist
+          </button>
+
+          <!-- live password strength tester — JS scores on each keystroke -->
+          <div class="password-checker reveal">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              Password Strength Checker
+            </h4>
+            <div class="pw-input-wrap">
+              <input type="password" id="pw-input" class="pw-input" placeholder="Test your password..." autocomplete="off" />
+              <button id="pw-toggle-vis" class="pw-eye" aria-label="Toggle password visibility">
+                <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
+            <div class="pw-bar-track"><div id="pw-bar" class="pw-bar-fill"></div></div>
+            <div id="pw-label" class="pw-label">Enter a password to test</div>
+          </div>
+        </div>
+
+        <div class="practices-right">
+          <div class="practice-item reveal">
+            <div class="pi-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="pi-body">
+              <h4>Use Strong, Unique Passwords</h4>
+              <p>Minimum 12 characters. Use a password manager. Never reuse passwords across different sites or apps.</p>
+            </div>
+          </div>
+          <div class="practice-item reveal">
+            <div class="pi-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="pi-body">
+              <h4>Enable Two-Factor Authentication</h4>
+              <p>Activate 2FA for your email, eSewa, Khalti, banking apps, and all social media accounts immediately.</p>
+            </div>
+          </div>
+          <div class="practice-item reveal">
+            <div class="pi-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="pi-body">
+              <h4>Verify Before You Click</h4>
+              <p>Never click suspicious links in SMS, WhatsApp, or emails. Verify the sender's identity carefully before acting.</p>
+            </div>
+          </div>
+          <div class="practice-item reveal">
+            <div class="pi-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="pi-body">
+              <h4>Keep All Software Updated</h4>
+              <p>Regularly update your phone OS, all apps, and antivirus software to patch known security vulnerabilities.</p>
+            </div>
+          </div>
+          <div class="practice-item reveal">
+            <div class="pi-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="pi-body">
+              <h4>Secure Your WiFi Network</h4>
+              <p>Avoid public WiFi for banking. Use WPA3 encryption at home. Always change default router passwords.</p>
+            </div>
+          </div>
+          <div class="practice-item reveal">
+            <div class="pi-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="pi-body">
+              <h4>Control Your Personal Data</h4>
+              <p>Limit oversharing on social media. Review app permissions regularly. Maximize privacy settings everywhere.</p>
+            </div>
+          </div>
+          <div class="practice-item reveal">
+            <div class="pi-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="pi-body">
+              <h4>Report Cyber Incidents</h4>
+              <p>Contact Nepal Police Cyber Bureau at <strong>1930</strong> or file online at cybercrime.police.gov.np.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- quiz: seven-question cybersecurity assessment with instant feedback per answer -->
+  <section id="quiz">
+    <div class="container">
+      <div class="section-header center">
+        <span class="tag reveal">TEST YOUR KNOWLEDGE</span>
+        <h2 class="section-title reveal">How cyber-aware<br>are you?</h2>
+        <p class="section-sub reveal">Take this quick quiz to assess your digital safety knowledge</p>
+      </div>
+
+      <div class="quiz-container reveal">
+        <!-- start: description card shown before quiz begins -->
+        <div id="quiz-start" class="quiz-screen">
+          <div class="quiz-start-icon">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Cyber Safety Quiz</h3>
+          <p>7 questions about cybersecurity, digital rights, and safe practices in Nepal's digital context.</p>
+          <button id="quiz-begin" class="btn btn-primary">
+            Start Quiz
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- active: question text, answer options, and progress bar -->
+        <div id="quiz-active" class="quiz-screen" style="display:none;">
+          <div class="quiz-progress">
+            <div class="qp-text"><span id="q-current">1</span> / <span id="q-total">7</span></div>
+            <div class="qp-bar-track"><div id="qp-bar" class="qp-bar-fill"></div></div>
+          </div>
+          <h3 id="q-question" class="q-question"></h3>
+          <div id="q-options" class="q-options"></div>
+          <div id="q-feedback" class="q-feedback" style="display:none;"></div>
+          <button id="q-next" class="btn btn-primary q-next-btn" style="display:none;">
+            Next Question
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- results: final score with grade message and replay button -->
+        <div id="quiz-results" class="quiz-screen" style="display:none;">
+          <div class="quiz-result-icon" id="result-icon"></div>
+          <h3 id="result-title"></h3>
+          <p id="result-desc"></p>
+          <div class="result-score">
+            <span id="result-score-num">0</span> / <span id="result-score-total">7</span>
+          </div>
+          <button id="quiz-restart" class="btn btn-primary">
+            Try Again
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- resources: three official Nepal contacts for reporting and getting help -->
+  <section id="resources">
+    <div class="container">
+      <div class="section-header center">
+        <span class="tag reveal">NEPAL RESOURCES</span>
+        <h2 class="section-title reveal">Get help.<br>Take action.</h2>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card reveal">
+          <div class="rc-header">
+            <div class="rc-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <span class="rc-badge rc-emg">Emergency</span>
+          </div>
+          <h3>Nepal Police Cyber Bureau</h3>
+          <p>Report cybercrime, digital fraud, and online harassment 24/7 — free, confidential, and official.</p>
+          <div class="rc-contact">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            1930
+          </div>
+          <a href="https://cybercrime.police.gov.np" class="rc-link" target="_blank" rel="noopener">cybercrime.police.gov.np
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <div class="resource-card reveal">
+          <div class="rc-header">
+            <div class="rc-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4d88ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <span class="rc-badge rc-gov">Government</span>
+          </div>
+          <h3>Nepal Telecom Authority</h3>
+          <p>Regulate internet service providers and protect consumer rights in Nepal's telecom sector.</p>
+          <div class="rc-contact">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            9751167167
+          </div>
+          <a href="https://nta.gov.np" class="rc-link" target="_blank" rel="noopener">nta.gov.np
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <div class="resource-card reveal">
+          <div class="rc-header">
+            <div class="rc-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <span class="rc-badge rc-edu">Education</span>
+          </div>
+          <h3>Digital Literacy Nepal</h3>
+          <p>Free workshops, guides, and resources to build digital literacy skills for communities across Nepal.</p>
+          <div class="rc-contact">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            info@digitalnp.org
+          </div>
+          <a href="#" class="rc-link">Learn More
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- news: six recent cybersecurity headlines and advisories affecting Nepal -->
+  <section id="news">
+    <div class="container">
+      <div class="section-header center">
+        <span class="tag reveal">LATEST CYBER NEWS</span>
+        <h2 class="section-title reveal">Stay informed.<br>Stay ahead.</h2>
+        <p class="section-sub reveal">Recent cybersecurity developments affecting Nepal's digital landscape</p>
+      </div>
+      <div class="news-grid">
+
+        <article class="news-card news-featured reveal">
+          <div class="nc-badge nc-breaking">BREAKING</div>
+          <div class="nc-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Feb 18, 2026
+          </div>
+          <h3>Nepal Police Cyber Bureau Reports 68% Surge in Online Fraud Cases</h3>
+          <p>The Cyber Bureau has recorded over 12,000 cybercrime complaints in the past fiscal year, with phishing and mobile banking fraud leading the surge. Bureau Chief SSP urges citizens to be extra vigilant with financial transactions.</p>
+          <div class="nc-footer">
+            <span class="nc-source">Nepal Police Cyber Bureau</span>
+            <span class="nc-read">4 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card reveal">
+          <div class="nc-badge nc-alert">ALERT</div>
+          <div class="nc-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Feb 12, 2026
+          </div>
+          <h3>New eSewa Phishing Campaign Targets 2M+ Users via SMS</h3>
+          <p>A sophisticated smishing campaign is impersonating eSewa with "KYC verification" messages. Users are urged to never click links in SMS and verify directly through the app.</p>
+          <div class="nc-footer">
+            <span class="nc-source">NTA Advisory</span>
+            <span class="nc-read">3 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card reveal">
+          <div class="nc-badge nc-update">UPDATE</div>
+          <div class="nc-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Feb 5, 2026
+          </div>
+          <h3>Government Introduces Digital Nepal Cybersecurity Framework 2026</h3>
+          <p>The Ministry of Communication has launched a comprehensive cybersecurity framework mandating data protection standards for all government digital services and private fintech platforms.</p>
+          <div class="nc-footer">
+            <span class="nc-source">MoCIT Nepal</span>
+            <span class="nc-read">5 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card reveal">
+          <div class="nc-badge nc-tip">TIP</div>
+          <div class="nc-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Jan 28, 2026
+          </div>
+          <h3>WhatsApp Rolls Out Passkey Support — Here's How Nepali Users Can Enable It</h3>
+          <p>WhatsApp now supports passkeys for login, eliminating SMS-based OTP vulnerabilities. Experts recommend all Nepali users switch to passkeys for stronger account security.</p>
+          <div class="nc-footer">
+            <span class="nc-source">Tech Security</span>
+            <span class="nc-read">2 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card reveal">
+          <div class="nc-badge nc-alert">ALERT</div>
+          <div class="nc-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Jan 20, 2026
+          </div>
+          <h3>SIM Swap Attacks Rise in Kathmandu Valley — NTC Issues Warning</h3>
+          <p>Nepal Telecom has warned subscribers about a surge in SIM swap fraud where criminals obtain duplicate SIMs to intercept banking OTPs. Users should contact 1498 if their SIM unexpectedly stops working.</p>
+          <div class="nc-footer">
+            <span class="nc-source">Nepal Telecom</span>
+            <span class="nc-read">3 min read</span>
+          </div>
+        </article>
+
+        <article class="news-card reveal">
+          <div class="nc-badge nc-update">UPDATE</div>
+          <div class="nc-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Jan 14, 2026
+          </div>
+          <h3>Nepal Ranks 108th in Global Cybersecurity Index — Experts Call for Action</h3>
+          <p>The ITU Global Cybersecurity Index 2025 placed Nepal at 108th, highlighting gaps in legal frameworks, capacity building, and organizational measures. Experts urge accelerated investment in cyber infrastructure.</p>
+          <div class="nc-footer">
+            <span class="nc-source">ITU Report</span>
+            <span class="nc-read">4 min read</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- faq: seven accordion items addressing common Nepal cybersecurity questions -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header center">
+        <span class="tag reveal">FREQUENTLY ASKED</span>
+        <h2 class="section-title reveal">Your questions,<br><em>answered.</em></h2>
+        <p class="section-sub reveal">Common cybersecurity questions from Nepali internet users</p>
+      </div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>If I get an OTP I didn't request, what should I do?</span>
+            <svg class="faq-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>An unrequested OTP means someone is trying to log into your account using your phone number. <strong>Do not share the OTP with anyone — ever.</strong> Immediately change your account password, enable 2FA with an authenticator app (more secure than SMS), and report to Nepal Police Cyber Bureau at <strong>1930</strong> if you suspect fraud.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Is it safe to use eSewa and Khalti on public WiFi?</span>
+            <svg class="faq-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p><strong>No.</strong> Public WiFi networks in cafes, airports, and hotels in Nepal are frequently targeted by attackers who can intercept your data. Always use mobile data (4G/5G) for financial transactions. If you must use public WiFi, enable a VPN first. Also ensure the app is the official version from Play Store or App Store.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>How do I know if my personal data has been leaked?</span>
+            <svg class="faq-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Visit <strong>haveibeenpwned.com</strong> and enter your email address — it checks if your data appeared in known breaches. Signs of a breach include unexpected login alerts, unfamiliar transactions, or receiving OTPs you didn't request. If breached, immediately change passwords, enable 2FA, and monitor your bank accounts closely.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>A Facebook page is offering me a job. How do I verify it's real?</span>
+            <svg class="faq-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Legitimate employers in Nepal <strong>never ask for money</strong> (processing fees, training costs) to get a job. Red flags: the page was created recently, has few followers, uses poor grammar, or asks for your bank details or citizenship number during initial contact. Verify by calling the company's official phone number found through a separate search, not from the job post itself.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>What should I do if my phone is stolen?</span>
+            <svg class="faq-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Act immediately: (1) Call your telecom (NTC: 1498 / Ncell: 9800098000) to block your SIM. (2) Use another device to log out of all accounts remotely via Google/Apple account settings. (3) Change passwords for banking apps and email. (4) Contact your bank to temporarily freeze mobile banking. (5) File a police report with your phone's IMEI number (check your box or *#06#).</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Can children and elderly people be targeted by cybercriminals?</span>
+            <svg class="faq-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p><strong>Yes — they are often the primary targets.</strong> Elderly people are targeted by phone scams impersonating grandchildren or bank officials. Children are targeted by online predators and inappropriate content. Educate family members about never sharing personal information online, and set up parental controls on devices used by children. Report suspicious activity to <strong>1930</strong>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Is using a VPN legal in Nepal?</span>
+            <svg class="faq-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Yes, using a VPN for personal privacy and security is currently legal in Nepal. VPNs encrypt your internet connection, protecting you on public networks. However, using a VPN to conduct illegal activities remains a criminal offense. Choose reputable VPN providers (ProtonVPN, Mullvad) and avoid free VPNs which may log and sell your data.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- cta: share buttons, newsletter signup, and Nepal tribute block -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-bg-word" aria-hidden="true">SACHETANA</div>
+        <span class="tag reveal">JOIN THE MOVEMENT</span>
+        <h2 class="cta-title reveal">
+          Be the change<br>Nepal needs<br><em>digitally.</em>
+        </h2>
+        <p class="cta-sub reveal">Share this knowledge. Protect your community. Build a safer digital Nepal.</p>
+
+        <div class="cta-share reveal">
+          <span>Share Sachetana:</span>
+          <div class="share-buttons">
+            <button class="share-btn" id="share-fb" aria-label="Share on Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              Facebook
+            </button>
+            <button class="share-btn" id="share-wa" aria-label="Share on WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </button>
+            <button class="share-btn" id="share-tw" aria-label="Share on Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              X / Twitter
+            </button>
+          </div>
+        </div>
+
+        <form class="newsletter-form reveal" id="nl-form">
+          <input type="email" id="nl-email" class="nl-input" placeholder="Your email address" autocomplete="email" required />
+          <button type="submit" class="nl-btn">Stay Updated</button>
+        </form>
+        <div id="nl-msg" class="nl-message"></div>
+
+        <div class="nepal-tribute reveal">
+          <svg width="20" height="24" viewBox="0 0 40 48" fill="none">
+            <path d="M5 46V2L35 18L5 18" fill="none" stroke="#DC143C" stroke-width="2"/>
+            <path d="M5 46L35 30L5 30" fill="none" stroke="#003893" stroke-width="2"/>
+            <circle cx="18" cy="11" r="3" fill="#fff" stroke="#DC143C" stroke-width="1"/>
+            <circle cx="18" cy="36" r="3" fill="#fff" stroke="#003893" stroke-width="1"/>
+          </svg>
+          <span>Made with pride for Nepal — <span class="np-inline">सबै नेपालीको लागि</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer: brand tagline, platform nav links, resources, and copyright -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-np">सचेतना</span>
+            <span class="logo-en">SACHETANA</span>
+          </div>
+          <p>Empowering Nepal's digital citizens with knowledge, rights awareness, and safe digital practices for a secure future.</p>
+          <div class="footer-motto np-inline">ज्ञान नै शक्ति — Knowledge is Power</div>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#threats">Cyber Threats</a></li>
+              <li><a href="#rights">Digital Rights</a></li>
+              <li><a href="#practices">Safe Practices</a></li>
+              <li><a href="#quiz">Quiz</a></li>
+              <li><a href="#news">News</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="https://cybercrime.police.gov.np" target="_blank" rel="noopener">Report Cybercrime</a></li>
+              <li><a href="#rights">Nepal Laws</a></li>
+              <li><a href="#practices">Security Tools</a></li>
+              <li><a href="#resources">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sachetana. Built for Nepal's digital future.</p>
+        <p>Secure Minds. Safer Digital Nepal.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- chatbot: floating action button + slide-up panel for cybersecurity Q&A -->
+  <div id="chatbot-fab" aria-label="Open cybersecurity assistant">
+    <svg class="cb-icon-chat" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+    <svg class="cb-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="display:none">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+    <span class="cb-badge">1</span>
+  </div>
+
+  <div id="chatbot-panel" aria-hidden="true">
+    <div class="cb-header">
+      <div class="cb-header-left">
+        <div class="cb-avatar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cb-name">Sachetana Bot</div>
+          <div class="cb-status"><span class="cb-status-dot"></span>Online — Cybersecurity Only</div>
+        </div>
+      </div>
+      <button id="cb-close" class="cb-close-btn" aria-label="Close chatbot">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="cb-messages" class="cb-messages"></div>
+    <div class="cb-suggestions" id="cb-suggestions">
+      <button class="cb-chip" data-q="What is phishing?">What is phishing?</button>
+      <button class="cb-chip" data-q="How to create a strong password?">Strong passwords</button>
+      <button class="cb-chip" data-q="What are my digital rights in Nepal?">Digital rights</button>
+      <button class="cb-chip" data-q="How to report cybercrime in Nepal?">Report cybercrime</button>
+    </div>
+    <form id="cb-form" class="cb-input-area">
+      <input type="text" id="cb-input" class="cb-input" placeholder="Ask about cybersecurity…" autocomplete="off" />
+      <button type="submit" class="cb-send" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
