@@ -4,18 +4,22 @@
   // grab the root element and the theme button
   const html = document.documentElement;
   const themeBtn = document.getElementById('theme-toggle');
+  const mmThemeBtn = document.getElementById('mm-theme-toggle');
   const STORAGE_KEY = 'sachetana-theme';
 
   // restore whatever theme the user picked last time
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) html.setAttribute('data-theme', saved);
 
-  // flip between dark and light when the button is clicked
-  themeBtn.addEventListener('click', function () {
+  function applyTheme() {
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     localStorage.setItem(STORAGE_KEY, next);
-  });
+  }
+
+  // flip between dark and light when either button is clicked
+  themeBtn.addEventListener('click', applyTheme);
+  mmThemeBtn.addEventListener('click', applyTheme);
 
   // wait for the page to fully load, then hide the preloader after a short delay
   window.addEventListener('load', function () {

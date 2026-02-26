@@ -357,20 +357,30 @@ img { max-width: 100%; display: block; }
   background: var(--bg);
   z-index: 999;
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  align-items: center; justify-content: flex-start;
+  padding-top: 80px; padding-bottom: 40px;
+  overflow-y: auto;
   transform: translateX(100%);
   transition: transform 0.5s cubic-bezier(0.77,0,0.18,1);
 }
+/* spacers push .mm-links to centre when there is room, but allow scrolling when not */
+#mobile-menu::before,
+#mobile-menu::after { content: ''; flex: 1; }
 #mobile-menu.open { transform: translateX(0); }
 
 .mm-header {
-  position: absolute; top: 20px; left: 24px; right: 24px;
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 72px; padding: 0 24px;
   display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
 }
+.mm-actions { display: flex; align-items: center; gap: 12px; }
 .mm-close { color: var(--text); padding: 4px; }
-.mm-links { text-align: center; display: flex; flex-direction: column; gap: 32px; }
+.mm-links { text-align: center; display: flex; flex-direction: column; gap: 28px; padding: 8px 0; }
 .mm-links a {
-  font-size: 36px; font-weight: 800;
+  font-size: clamp(26px, 8vw, 36px); font-weight: 800;
   letter-spacing: -0.02em; color: var(--text);
   transition: color var(--tr-fast);
 }
